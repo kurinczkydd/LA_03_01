@@ -90,6 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\SideToBrushConverter.cs" />
     <Compile Include="HeroEditor.xaml.cs">
       <DependentUpon>HeroEditor.xaml</DependentUpon>
     </Compile>
@@ -140,6 +141,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Properties\superarmy.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

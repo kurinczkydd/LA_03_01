@@ -25,6 +25,7 @@ namespace LA_03_01.ViewModels
         public ICommand AddToArmyCommand { get; set; }
         public ICommand RemoveFromArmyCommand { get; set; }
         public ICommand EditSuperHeroCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
 
         public double AVGPower
         {
@@ -91,14 +92,18 @@ namespace LA_03_01.ViewModels
 
             SuperBarrack = new ObservableCollection<SuperHero>();
             if (File.Exists("superbarrack.json"))
-                Console.WriteLine("asd");
+                SuperBarrack = JsonConvert.DeserializeObject<ObservableCollection<SuperHero>>(File.ReadAllText("superbarrack.json"));
+            //SuperBarrack.Add(new SuperHero() { Name = "Superman", Power = 10, Speed = 10, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Batman", Power = 6, Speed = 8, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Joker", Power = 4, Speed = 7, Wichside = side.Bad });
+            //SuperBarrack.Add(new SuperHero() { Name = "Iron Man", Power = 7, Speed = 9, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Two Face", Power = 4, Speed = 3, Wichside = side.Bad });
+            //SuperBarrack.Add(new SuperHero() { Name = "Robin hood", Power = 2, Speed = 5, Wichside = side.Neutral });
 
-            SuperBarrack.Add(new SuperHero() { Name = "asd", Power = 2, Speed = 10, Wichside = side.Good });
-            SuperBarrack.Add(new SuperHero() { Name = "asd", Power = 5, Speed = 6, Wichside = side.Bad });
-            
 
             SuperArmy = new ObservableCollection<SuperHero>();
-            SuperArmy.Add(SuperBarrack[0].GetCopy());
+            if (File.Exists("superarmy.json"))
+                SuperArmy = JsonConvert.DeserializeObject<ObservableCollection<SuperHero>>(File.ReadAllText("superarmy.json"));
 
             logic.SetupCollection(SuperBarrack, SuperArmy);
 
@@ -116,12 +121,20 @@ namespace LA_03_01.ViewModels
                 () => logic.EditSuperHero(SelectedFromBarrack),
                 () => SelectedFromBarrack != null
                 );
+            
+            SaveCommand = new RelayCommand(() => SaveToJson());
 
             Messenger.Register<MainWindowViewModels, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
             {
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
             });
+        }
+
+        private void SaveToJson()
+        {
+            File.WriteAllText("superbarrack.json", JsonConvert.SerializeObject(SuperBarrack));
+            File.WriteAllText("superarmy.json", JsonConvert.SerializeObject(SuperArmy));
         }
     }
 }
