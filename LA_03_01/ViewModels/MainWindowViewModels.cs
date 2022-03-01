@@ -3,10 +3,12 @@ using LA_03_01.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,22 @@ namespace LA_03_01.ViewModels
         public ICommand RemoveFromArmyCommand { get; set; }
         public ICommand EditSuperHeroCommand { get; set; }
 
+        public double AVGPower
+        {
+            get
+            {
+                return logic.AVGPower;
+            }
+        }
+
+        public double AVGSpeed
+        {
+            get
+            {
+                return logic.AVGSpeed;
+            }
+        }
+
         public ObservableCollection<SuperHero> SuperBarrack { get; set; }
         public ObservableCollection<SuperHero> SuperArmy { get; set; }
 
@@ -35,8 +53,8 @@ namespace LA_03_01.ViewModels
             set
             {
                 SetProperty(ref selectedFromBarrack, value);
-                //(AddToArmyCommand as RelayCommand).NotifyCanExecuteChanged();
-                //(EditTrooperCommand as RelayCommand).NotifyCanExecuteChanged();
+                (AddToArmyCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -48,7 +66,7 @@ namespace LA_03_01.ViewModels
             set
             {
                 SetProperty(ref selectedFromArmy, value);
-                //(RemoveFromArmyCommand as RelayCommand).NotifyCanExecuteChanged();
+                (RemoveFromArmyCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -72,6 +90,9 @@ namespace LA_03_01.ViewModels
             this.logic = logic;
 
             SuperBarrack = new ObservableCollection<SuperHero>();
+            if (File.Exists("superbarrack.json"))
+                Console.WriteLine("asd");
+
             SuperBarrack.Add(new SuperHero() { Name = "asd", Power = 2, Speed = 10, Wichside = side.Good });
             SuperBarrack.Add(new SuperHero() { Name = "asd", Power = 5, Speed = 6, Wichside = side.Bad });
             
@@ -79,26 +100,25 @@ namespace LA_03_01.ViewModels
             SuperArmy = new ObservableCollection<SuperHero>();
             SuperArmy.Add(SuperBarrack[0].GetCopy());
 
-            logic.SetupCollections(Barrack, Army);
+            logic.SetupCollection(SuperBarrack, SuperArmy);
 
             AddToArmyCommand = new RelayCommand(
-                () => logic.AddToArmy(SelectedFromBarrack),
+                () => logic.AddtoArmy(SelectedFromBarrack),
                 () => SelectedFromBarrack != null
                 );
 
             RemoveFromArmyCommand = new RelayCommand(
-                () => logic.RemoveFromArmy(SelectedFromArmy),
+                () => logic.RemovefromArmy(SelectedFromArmy),
                 () => SelectedFromArmy != null
                 );
 
             EditSuperHeroCommand = new RelayCommand(
-                () => logic.EditTrooper(SelectedFromBarrack),
+                () => logic.EditSuperHero(SelectedFromBarrack),
                 () => SelectedFromBarrack != null
                 );
 
             Messenger.Register<MainWindowViewModels, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
             {
-                OnPropertyChanged("AllCost");
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
             });

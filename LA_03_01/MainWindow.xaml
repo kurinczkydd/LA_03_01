@@ -49,16 +49,16 @@
 
         <StackPanel Grid.Column="1" Margin="0,10,0,0">
             <!--<Label Content="{Binding Money}" ContentStringFormat="Money: {0}$" />-->
-            <Button Content="Add to army" Margin="5" Height="35"/>
-            <Button Content="Remove from army" Margin="5" Height="35"/>
-            <Button Content="Edit superhero" Margin="5" Height="35"/>
+            <Button Content="Add to army" Margin="5" Height="35" Command="{Binding AddToArmyCommand}"/>
+            <Button Content="Remove from army" Margin="5" Height="35" Command="{Binding RemoveFromArmyCommand}"/>
+            <Button Content="Edit superhero" Margin="5" Height="35" Command="{Binding EditSuperHeroCommand}"/>
 
             <Label Content="Average Speed" HorizontalAlignment="Center"/>
-            <ProgressBar Height="20" Value="{Binding AVGSpeed}" Margin="5,0,5,5"
-                         Minimum="0" Maximum="10" Foreground="{Binding AVGSpeed, Converter={StaticResource ValueToBrush}}"/>
+            <ProgressBar Height="20" Value="{Binding AVGSpeed, Mode=OneWay}" Margin="5,0,5,5"
+                         Minimum="0" Maximum="10" Foreground="{Binding AVGSpeed, Mode=OneWay, Converter={StaticResource ValueToBrush}}"/>
             <Label Content="Average Power" HorizontalAlignment="Center"/>
-            <ProgressBar Height="20" Value="{Binding AVGPower}" Margin="5,0,5,5"
-                         Minimum="0" Maximum="10" Foreground="{Binding AVGPower, Converter={StaticResource ValueToBrush}}"/>
+            <ProgressBar Height="20" Value="{Binding AVGPower, Mode=OneWay}" Margin="5,0,5,5"
+                         Minimum="0" Maximum="10" Foreground="{Binding AVGPower, Mode=OneWay, Converter={StaticResource ValueToBrush}}"/>
         </StackPanel>
 
         <ListBox Grid.Column="2" ItemsSource="{Binding SuperArmy}" SelectedItem="{Binding SelectedFromArmy}" 

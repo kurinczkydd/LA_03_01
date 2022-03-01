@@ -13,13 +13,19 @@ namespace LA_03_01.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int v = (int)value;
-            if (v <= 3)
+            double number = double.Parse(value.ToString());
+            if (number <= 3)
+            {
                 return Brushes.Red;
-            else if (v > 3 && v <= 6)
+            }
+            else if (number <= 7)
+            {
                 return Brushes.Yellow;
+            }
             else
+            {
                 return Brushes.Green;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,4 +1,5 @@
 ﻿using LA_03_01.Logic;
+using LA_03_01.Services;
 using LA_03_01.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
@@ -23,7 +24,7 @@ namespace LA_03_01
             Ioc.Default.ConfigureServices(
                     new ServiceCollection()
                         .AddSingleton<ISuperHeroLogic, SuperHeroLogic>()
-                        //.AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
+                        .AddSingleton<ISuperHeroEditorService, EditorViaWindow>()
                         .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                         .BuildServiceProvider()
                     );
