@@ -22,7 +22,7 @@ namespace LA_03_01
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }
