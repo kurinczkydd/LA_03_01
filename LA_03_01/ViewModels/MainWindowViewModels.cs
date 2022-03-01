@@ -93,12 +93,12 @@ namespace LA_03_01.ViewModels
             SuperBarrack = new ObservableCollection<SuperHero>();
             if (File.Exists("superbarrack.json"))
                 SuperBarrack = JsonConvert.DeserializeObject<ObservableCollection<SuperHero>>(File.ReadAllText("superbarrack.json"));
-            SuperBarrack.Add(new SuperHero() { Name = "Superman", Power = 10, Speed = 10, Wichside = side.Good });
-            SuperBarrack.Add(new SuperHero() { Name = "Batman", Power = 6, Speed = 8, Wichside = side.Good });
-            SuperBarrack.Add(new SuperHero() { Name = "Joker", Power = 4, Speed = 7, Wichside = side.Bad });
-            SuperBarrack.Add(new SuperHero() { Name = "Iron Man", Power = 7, Speed = 9, Wichside = side.Good });
-            SuperBarrack.Add(new SuperHero() { Name = "Two Face", Power = 4, Speed = 3, Wichside = side.Bad });
-            SuperBarrack.Add(new SuperHero() { Name = "Robin hood", Power = 2, Speed = 5, Wichside = side.Neutral });
+            //SuperBarrack.Add(new SuperHero() { Name = "Superman", Power = 10, Speed = 10, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Batman", Power = 6, Speed = 8, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Joker", Power = 4, Speed = 7, Wichside = side.Bad });
+            //SuperBarrack.Add(new SuperHero() { Name = "Iron Man", Power = 7, Speed = 9, Wichside = side.Good });
+            //SuperBarrack.Add(new SuperHero() { Name = "Two Face", Power = 4, Speed = 3, Wichside = side.Bad });
+            //SuperBarrack.Add(new SuperHero() { Name = "Robin hood", Power = 2, Speed = 5, Wichside = side.Neutral });
 
 
             SuperArmy = new ObservableCollection<SuperHero>();

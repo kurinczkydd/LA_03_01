@@ -5,22 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LA_03_01"
         xmlns:vms="clr-namespace:LA_03_01.ViewModels"
+        xmlns:helper="clr-namespace:LA_03_01.Helper"
         mc:Ignorable="d"
-        Title="HeroEditor" Height="302.459" Width="388.115">
+        Title="HeroEditor" Height="362.705" Width="407.787">
     <Window.DataContext>
-        <vms:HeroEditorWindowViewModel/> 
+        <vms:HeroEditorWindowViewModel/>
 
     </Window.DataContext>
+    <Window.Resources>
+        <helper:SidetoEnumConverter x:Key="Converter"/>
+    </Window.Resources>
 
 
     <StackPanel Margin="0,0,2,6" x:Name="stack">
         <Label Content="Side" Padding="10" Background="LightPink"></Label>
-        <ComboBox SelectedItem="">
+        <ComboBox SelectedItem="{Binding Actual.Wichside, Converter={StaticResource Converter}}">
             <ComboBoxItem Content="Good"></ComboBoxItem>
             <ComboBoxItem Content="Bad"></ComboBoxItem>
             <ComboBoxItem Content="Neutral"></ComboBoxItem>
-            
+
         </ComboBox>
+        <Label Content="Name" Padding="10" Background="LightPink"></Label>
+        <TextBox Text="{Binding Actual.Name, UpdateSourceTrigger=Explicit}" Padding="10"></TextBox>
         <Label Content="Speed" Padding="10" Background="LightPink"></Label>
         <TextBox Text="{Binding Actual.Speed, UpdateSourceTrigger=Explicit}" Padding="10"></TextBox>
         <Label Content="Power" Padding="10" Background="LightPink"></Label>

@@ -13,8 +13,9 @@ namespace LA_03_01.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            side s = (side)value;
-            return s.ToString();
+            string s = (string)value;
+            Enum.TryParse(s, out side Side);
+            return Side;
             
         }
 

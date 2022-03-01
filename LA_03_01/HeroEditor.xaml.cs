@@ -32,8 +32,17 @@ namespace LA_03_01
         {
             foreach (var item in stack.Children)
             {
+                if (item is TextBox t)
+                {
+                    t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+                if (item is ComboBox t2)
+                {
+                    t2.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+                }
 
             }
+            this.DialogResult = true;
         }
     }
 }
