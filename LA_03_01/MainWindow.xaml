@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LA_03_01"
         xmlns:helper="clr-namespace:LA_03_01.Helper"
         xmlns:vms="clr-namespace:LA_03_01.ViewModels"
+        xmlns:asd ="clr-namespace:LA_03_01.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -14,19 +15,26 @@
 
     <Window.Resources>
         <helper:ValueToBrushConverter x:Key="ValueToBrush"/>
+        <helper:SideToBrushConverter x:Key="SideToBrush"/>
     </Window.Resources>
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding SuperBarrack}" SelectedItem="{Binding SelectedFromBarrack}" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding SuperBarrack}" SelectedItem="{Binding SelectedFromBarrack}" HorizontalContentAlignment="Stretch"
+                 Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{Binding Wichside, Converter={StaticResource SideToBrush}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -36,11 +44,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Name}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Wichside}"/>
-                        <ProgressBar Height="20" Grid.Row="1" Grid.Column="0" Value="{Binding Power}" Margin="5,0"
+                        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Name}" FontWeight="Bold"/>
+                        <ProgressBar Height="20" Grid.Row="1" Grid.Column="0" Value="{Binding Power}" Margin="5"
                                      Minimum="0" Maximum="10" Foreground="{Binding Power, Converter={StaticResource ValueToBrush}}"/>
-                        <ProgressBar Height="20" Grid.Row="1" Grid.Column="1" Value="{Binding Speed}" Margin="5,0"
+                        <ProgressBar Height="20" Grid.Row="1" Grid.Column="1" Value="{Binding Speed}" Margin="5"
                                      Minimum="0" Maximum="10" Foreground="{Binding Speed, Converter={StaticResource ValueToBrush}}"/>
                     </Grid>
                 </DataTemplate>
@@ -61,13 +68,15 @@
                          Minimum="0" Maximum="10" Foreground="{Binding AVGPower, Mode=OneWay, Converter={StaticResource ValueToBrush}}"/>
         </StackPanel>
 
+        <Button Grid.Row="1" Grid.Column="1" Content="Save" Margin="5" Height="35" Command="{Binding SaveCommand}"/>
+
         <ListBox Grid.Column="2" ItemsSource="{Binding SuperArmy}" SelectedItem="{Binding SelectedFromArmy}" 
-                 HorizontalContentAlignment="Stretch">
+                 HorizontalContentAlignment="Stretch" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Name}"/>
-                        <Label Content="{Binding Power}"/>
+                        <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
+                        <Label Content="{Binding Power}" ContentStringFormat="Specs: {0}"/>
                         <Label Content="{Binding Speed}"/>
                         <Label Content="{Binding Wichside}"/>
                     </StackPanel>
