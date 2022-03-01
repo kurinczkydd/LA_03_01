@@ -9,7 +9,7 @@ namespace LA_03_01.Services
 {
     public class EditorViaWindow : ISuperHeroEditorService
     {
-        public void Edit(SuperHero superHero)
+        public void Add(SuperHero superHero)
         {
             new HeroEditor(superHero).ShowDialog();
         }

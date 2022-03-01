@@ -24,7 +24,7 @@ namespace LA_03_01.ViewModels
 
         public ICommand AddToArmyCommand { get; set; }
         public ICommand RemoveFromArmyCommand { get; set; }
-        public ICommand EditSuperHeroCommand { get; set; }
+        public ICommand AddSuperHeroCommand { get; set; }
         public ICommand SaveCommand { get; set; }
 
         public double AVGPower
@@ -55,7 +55,7 @@ namespace LA_03_01.ViewModels
             {
                 SetProperty(ref selectedFromBarrack, value);
                 (AddToArmyCommand as RelayCommand).NotifyCanExecuteChanged();
-                (EditSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
+                (AddSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -117,10 +117,8 @@ namespace LA_03_01.ViewModels
                 () => SelectedFromArmy != null
                 );
 
-            EditSuperHeroCommand = new RelayCommand(
-                () => logic.EditSuperHero(SelectedFromBarrack),
-                () => SelectedFromBarrack != null
-                );
+            AddSuperHeroCommand = new RelayCommand(
+                () => logic.AddSuperHero(new SuperHero()));
             
             SaveCommand = new RelayCommand(() => SaveToJson());
 
@@ -128,13 +126,14 @@ namespace LA_03_01.ViewModels
             {
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
+                OnPropertyChanged("SuperBarrack");
             });
         }
 
         private void SaveToJson()
         {
             File.WriteAllText("superbarrack.json", JsonConvert.SerializeObject(SuperBarrack));
-            File.WriteAllText("superarmy.json", JsonConvert.SerializeObject(SuperArmy));
+            File.WriteAllText("Properties\\superarmy.json", JsonConvert.SerializeObject(SuperArmy));
         }
     }
 }
