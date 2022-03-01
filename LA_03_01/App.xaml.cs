@@ -20,13 +20,13 @@ namespace LA_03_01
     {
         public App()
         {
-            //Ioc.Default.ConfigureServices(
-            //        new ServiceCollection()
-            //            .AddSingleton<ISuperHeroLogic, SuperHeroLogic>()
-            //            //.AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
-            //            .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
-            //            .BuildServiceProvider()
-            //        );
+            Ioc.Default.ConfigureServices(
+                    new ServiceCollection()
+                        .AddSingleton<ISuperHeroLogic, SuperHeroLogic>()
+                        //.AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
+                        .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
+                        .BuildServiceProvider()
+                    );
         }
     }
 }

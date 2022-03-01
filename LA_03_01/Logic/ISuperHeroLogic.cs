@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LA_03_01.Logic
 {
-    interface ISuperHeroLogic
+    public interface ISuperHeroLogic
     {
         double AVGPower { get; }
         double AVGSpeed { get; }

@@ -1,6 +1,8 @@
-﻿using LA_03_01.Models;
+﻿using LA_03_01.Logic;
+using LA_03_01.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace LA_03_01.ViewModels
 {
@@ -16,6 +19,10 @@ namespace LA_03_01.ViewModels
     public class MainWindowViewModels : ObservableRecipient
     {
         ISuperHeroLogic logic;
+
+        public ICommand AddToArmyCommand { get; set; }
+        public ICommand RemoveFromArmyCommand { get; set; }
+        public ICommand EditSuperHeroCommand { get; set; }
 
         public ObservableCollection<SuperHero> SuperBarrack { get; set; }
         public ObservableCollection<SuperHero> SuperArmy { get; set; }
@@ -70,6 +77,31 @@ namespace LA_03_01.ViewModels
             
 
             SuperArmy = new ObservableCollection<SuperHero>();
+            SuperArmy.Add(SuperBarrack[0].GetCopy());
+
+            logic.SetupCollections(Barrack, Army);
+
+            AddToArmyCommand = new RelayCommand(
+                () => logic.AddToArmy(SelectedFromBarrack),
+                () => SelectedFromBarrack != null
+                );
+
+            RemoveFromArmyCommand = new RelayCommand(
+                () => logic.RemoveFromArmy(SelectedFromArmy),
+                () => SelectedFromArmy != null
+                );
+
+            EditSuperHeroCommand = new RelayCommand(
+                () => logic.EditTrooper(SelectedFromBarrack),
+                () => SelectedFromBarrack != null
+                );
+
+            Messenger.Register<MainWindowViewModels, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
+            {
+                OnPropertyChanged("AllCost");
+                OnPropertyChanged("AVGPower");
+                OnPropertyChanged("AVGSpeed");
+            });
         }
     }
 }
