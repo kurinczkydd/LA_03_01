@@ -24,7 +24,7 @@ namespace LA_03_01.ViewModels
 
         public ICommand AddToArmyCommand { get; set; }
         public ICommand RemoveFromArmyCommand { get; set; }
-        public ICommand EditSuperHeroCommand { get; set; }
+        public ICommand AddSuperHeroCommand { get; set; }
         public ICommand SaveCommand { get; set; }
 
         public double AVGPower
@@ -55,7 +55,7 @@ namespace LA_03_01.ViewModels
             {
                 SetProperty(ref selectedFromBarrack, value);
                 (AddToArmyCommand as RelayCommand).NotifyCanExecuteChanged();
-                (EditSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
+                (AddSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -117,8 +117,8 @@ namespace LA_03_01.ViewModels
                 () => SelectedFromArmy != null
                 );
 
-            EditSuperHeroCommand = new RelayCommand(
-                () => logic.EditSuperHero(SelectedFromBarrack),
+            AddSuperHeroCommand = new RelayCommand(
+                () => logic.AddSuperHero(),
                 () => SelectedFromBarrack != null
                 );
             
