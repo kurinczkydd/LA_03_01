@@ -40,8 +40,10 @@ namespace LA_03_01
                 {
                     t2.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
                 }
-
+                
             }
+            var a = (DataContext as HeroEditorWindowViewModel).Actual;
+            ;
             this.DialogResult = true;
         }
     }

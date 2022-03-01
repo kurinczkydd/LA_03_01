@@ -9,9 +9,12 @@ namespace LA_03_01.Services
 {
     public class EditorViaWindow : ISuperHeroEditorService
     {
-        public void Add(SuperHero superHero)
+        public SuperHero Add()
         {
-            new HeroEditor(superHero).ShowDialog();
+            SuperHero superHero = new SuperHero();
+            HeroEditor he = new HeroEditor(superHero);
+            he.ShowDialog();
+            return superHero;
         }
     }
 }

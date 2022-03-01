@@ -13,15 +13,17 @@ namespace LA_03_01.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string s = (string)value;
+            string s = value.ToString();
             Enum.TryParse(s, out side Side);
             return Side;
-            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            
+            string s = value.ToString();
+            Enum.TryParse(s, out side Side);
+            return Side;
         }
     }
 }

@@ -9,6 +9,6 @@ namespace LA_03_01.Services
 {
     public interface ISuperHeroEditorService
     {
-        void Add(SuperHero superHero);
+        SuperHero Add();
     }
 }

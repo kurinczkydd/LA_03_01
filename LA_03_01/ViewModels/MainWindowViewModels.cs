@@ -118,7 +118,7 @@ namespace LA_03_01.ViewModels
                 );
 
             AddSuperHeroCommand = new RelayCommand(
-                () => logic.AddSuperHero(new SuperHero()));
+                () => logic.AddSuperHero());
             
             SaveCommand = new RelayCommand(() => SaveToJson());
 

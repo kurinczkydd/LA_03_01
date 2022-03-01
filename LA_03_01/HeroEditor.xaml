@@ -8,10 +8,7 @@
         xmlns:helper="clr-namespace:LA_03_01.Helper"
         mc:Ignorable="d"
         Title="HeroEditor" Height="362.705" Width="407.787">
-    <Window.DataContext>
-        <vms:HeroEditorWindowViewModel/>
 
-    </Window.DataContext>
     <Window.Resources>
         <helper:SidetoEnumConverter x:Key="Converter"/>
     </Window.Resources>
