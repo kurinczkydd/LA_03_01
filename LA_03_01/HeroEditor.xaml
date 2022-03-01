@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LA_03_01"
         mc:Ignorable="d"
-        Title="HeroEditor" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="HeroEditor" Height="234.836" Width="351.23">
+    <StackPanel Margin="0,0,2,6">
+        <Label Content="Power" Padding="10" Background="LightPink"></Label>
+        <TextBlock></TextBlock>
+        <Label Content="Power" Padding="10" Background="LightPink"></Label>
+        <TextBlock></TextBlock>
+        <Label Content="Power" Padding="10" Background="LightPink"></Label>
+        <TextBlock></TextBlock>
+        <Button Content="Save" Click="Button_Click" Padding="10"></Button>
+
+    </StackPanel>
 </Window>
