@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LA_03_01.Models
 {
-    public enum side { Good, Bad, Neutral }
+    public enum side { Good,Bad,Neutral}
     public class SuperHero : INotifyPropertyChanged
     {
 
