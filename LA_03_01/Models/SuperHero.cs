@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LA_03_01.Models
 {
+    public enum side { Good,Bad,Neutral}
     class SuperHero : INotifyPropertyChanged
     {
 
@@ -18,12 +19,12 @@ namespace LA_03_01.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(s));
         }
 
-        private string type;
+        private string name;
 
-        public string Type
+        public string Name
         {
-            get { return type; }
-            set { type = value; OnPropertyChanged(); }
+            get { return name; }
+            set { name = value; OnPropertyChanged(); }
         }
 
         private int power;
@@ -34,30 +35,30 @@ namespace LA_03_01.Models
             set { power = value; OnPropertyChanged(); }
         }
 
-        private int vitality;
+        private int speed;
 
-        public int Vitality
+        public int Speed
         {
-            get { return vitality; }
-            set { vitality = value; OnPropertyChanged(); }
+            get { return speed; }
+            set { speed = value; OnPropertyChanged(); }
         }
 
-        private int cost;
+        private side wichside;
 
-        public int Cost
+        public side Wichside
         {
-            get { return cost; }
-            set { cost = value; OnPropertyChanged(); }
+            get { return wichside; }
+            set { wichside = value; OnPropertyChanged(); }
         }
 
         public SuperHero GetCopy()
         {
             return new SuperHero()
             {
-                Type = this.Type,
+                Name = this.Name,
                 Power = this.Power,
-                Vitality = this.Vitality,
-                Cost = this.Cost
+                Speed = this.Speed,
+                Wichside = this.wichside
             };
         }
 
