@@ -14,8 +14,13 @@
 
 
     <StackPanel Margin="0,0,2,6" x:Name="stack">
-        <Label Content="Power" Padding="10" Background="LightPink"></Label>
-        <TextBox Text="2" Padding="10"></TextBox>
+        <Label Content="Side" Padding="10" Background="LightPink"></Label>
+        <ComboBox SelectedItem="">
+            <ComboBoxItem Content="Good"></ComboBoxItem>
+            <ComboBoxItem Content="Bad"></ComboBoxItem>
+            <ComboBoxItem Content="Neutral"></ComboBoxItem>
+            
+        </ComboBox>
         <Label Content="Speed" Padding="10" Background="LightPink"></Label>
         <TextBox Text="{Binding Actual.Speed, UpdateSourceTrigger=Explicit}" Padding="10"></TextBox>
         <Label Content="Power" Padding="10" Background="LightPink"></Label>
