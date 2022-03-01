@@ -81,8 +81,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HeroEditor.xaml.cs">
+      <DependentUpon>HeroEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EditorViaWindow.cs" />
     <Compile Include="Services\ISuperHeroEditorService.cs" />
     <Compile Include="ViewModels\MainWindowViewModels.cs" />
+    <Page Include="HeroEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
