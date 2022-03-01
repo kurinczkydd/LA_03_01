@@ -91,13 +91,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\SideToBrushConverter.cs" />
+    <Compile Include="Helper\SidetoEnumConverter.cs" />
     <Compile Include="HeroEditor.xaml.cs">
       <DependentUpon>HeroEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\EditorViaWindow.cs" />
     <Compile Include="Services\ISuperHeroEditorService.cs" />
-	  <Compile Include="Helper\ValueToBrushConverter.cs" />
-	  <Compile Include="ViewModels\HeroEditorWindowViewModel.cs" />
+    <Compile Include="Helper\ValueToBrushConverter.cs" />
+    <Compile Include="ViewModels\HeroEditorWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModels.cs" />
     <Page Include="HeroEditor.xaml">
       <SubType>Designer</SubType>
