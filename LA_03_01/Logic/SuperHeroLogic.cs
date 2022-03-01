@@ -1,4 +1,6 @@
 ﻿using LA_03_01.Models;
+using LA_03_01.Services;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,19 @@ namespace LA_03_01.Logic
     {
         IList<SuperHero> SuperHeroBarrack;
         IList<SuperHero> SuperHeroArmy;
+        IMessenger messenger;
+        ISuperHeroEditorService heroEditorService;
 
         public void SetupCollection(IList<SuperHero> barrack, IList<SuperHero> army)
         {
             this.SuperHeroBarrack = barrack;
             this.SuperHeroArmy = army;
 
+        }
+        public SuperHeroLogic(IMessenger messenger,ISuperHeroEditorService heroEditorService)
+        {
+            this.messenger = messenger;
+            this.heroEditorService = heroEditorService;
         }
 
         public double AVGPower
@@ -38,10 +47,16 @@ namespace LA_03_01.Logic
         public void AddtoArmy(SuperHero superHero)
         {
             SuperHeroArmy.Add(superHero.GetCopy());
+            messenger.Send("Superhero Added", "SuperHeroInfo");
         }
         public void RemovefromArmy(SuperHero superHero)
         {
             SuperHeroArmy.Remove(superHero);
+            messenger.Send("Superhero Removed", "SuperHeroInfo");
+        }
+        public void EditSuperHero(SuperHero superHero)
+        {
+            heroEditorService.Edit(superHero);
         }
 
 
