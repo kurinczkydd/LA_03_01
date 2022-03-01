@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace LA_03_01.Models
 {
     public enum side { Good, Bad, Neutral }
-
     class SuperHero : INotifyPropertyChanged
     {
 
@@ -44,16 +43,13 @@ namespace LA_03_01.Models
             set { speed = value; OnPropertyChanged(); }
         }
 
-        private side witchside;
+        private side wichside;
 
-        public side Witchside
+        public side Wichside
         {
-            {
-                get { return wichside; }
-                set { wichside = value; OnPropertyChanged(); }
-            }
+            get { return wichside; }
+            set { wichside = value; OnPropertyChanged(); }
         }
-        
 
         public SuperHero GetCopy()
         {
