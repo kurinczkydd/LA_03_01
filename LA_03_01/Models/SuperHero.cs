@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LA_03_01.Models
 {
     public enum side { Good, Bad, Neutral }
-    class SuperHero : INotifyPropertyChanged
+    public class SuperHero : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

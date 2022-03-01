@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="Services\EditorViaWindow.cs" />
     <Compile Include="Services\ISuperHeroEditorService.cs" />
+    <Compile Include="ViewModels\HeroEditorWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModels.cs" />
     <Page Include="HeroEditor.xaml">
       <SubType>Designer</SubType>

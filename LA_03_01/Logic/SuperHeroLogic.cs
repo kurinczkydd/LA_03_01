@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LA_03_01.Logic
 {
-    class SuperHeroLogic : ISuperHeroLogic
+    public class SuperHeroLogic : ISuperHeroLogic
     {
         IList<SuperHero> SuperHeroBarrack;
         IList<SuperHero> SuperHeroArmy;
