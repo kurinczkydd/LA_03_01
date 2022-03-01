@@ -11,7 +11,7 @@ namespace LA_03_01.Services
     {
         public void Edit(SuperHero superHero)
         {
-            throw new NotImplementedException();
+            new HeroEditor(superHero).ShowDialog();
         }
     }
 }

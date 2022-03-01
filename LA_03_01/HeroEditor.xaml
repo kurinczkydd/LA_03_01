@@ -4,15 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LA_03_01"
+        xmlns:vms="clr-namespace:LA_03_01.ViewModels"
         mc:Ignorable="d"
-        Title="HeroEditor" Height="234.836" Width="351.23">
-    <StackPanel Margin="0,0,2,6">
+        Title="HeroEditor" Height="302.459" Width="388.115">
+    <Window.DataContext>
+        <vms:HeroEditorWindowViewModel/> 
+
+    </Window.DataContext>
+
+
+    <StackPanel Margin="0,0,2,6" x:Name="stack">
+        <Label Content="Side" Padding="10" Background="LightPink"></Label>
+        <ComboBox SelectedItem="">
+            <ComboBoxItem Content="Good"></ComboBoxItem>
+            <ComboBoxItem Content="Bad"></ComboBoxItem>
+            <ComboBoxItem Content="Neutral"></ComboBoxItem>
+            
+        </ComboBox>
+        <Label Content="Speed" Padding="10" Background="LightPink"></Label>
+        <TextBox Text="{Binding Actual.Speed, UpdateSourceTrigger=Explicit}" Padding="10"></TextBox>
         <Label Content="Power" Padding="10" Background="LightPink"></Label>
-        <TextBlock></TextBlock>
-        <Label Content="Power" Padding="10" Background="LightPink"></Label>
-        <TextBlock></TextBlock>
-        <Label Content="Power" Padding="10" Background="LightPink"></Label>
-        <TextBlock></TextBlock>
+        <TextBox Text="{Binding Actual.Power, UpdateSourceTrigger=Explicit}" Padding="10"></TextBox>
         <Button Content="Save" Click="Button_Click" Padding="10"></Button>
 
     </StackPanel>
