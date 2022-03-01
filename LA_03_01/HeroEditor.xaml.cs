@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LA_03_01.Models;
+using LA_03_01.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,19 @@ namespace LA_03_01
     /// </summary>
     public partial class HeroEditor : Window
     {
-        public HeroEditor()
+        public HeroEditor(SuperHero hero)
         {
             InitializeComponent();
+            this.DataContext = new HeroEditorWindowViewModel();
+            (this.DataContext as HeroEditorWindowViewModel).Setup(hero);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var item in stack.Children)
+            {
 
+            }
         }
     }
 }
