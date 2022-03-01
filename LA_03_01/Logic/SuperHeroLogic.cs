@@ -8,5 +8,7 @@ namespace LA_03_01.Logic
 {
     class SuperHeroLogic
     {
+
+
     }
 }
