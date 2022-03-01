@@ -118,9 +118,7 @@ namespace LA_03_01.ViewModels
                 );
 
             AddSuperHeroCommand = new RelayCommand(
-                () => logic.AddSuperHero(),
-                () => SelectedFromBarrack != null
-                );
+                () => logic.AddSuperHero(new SuperHero()));
             
             SaveCommand = new RelayCommand(() => SaveToJson());
 
@@ -128,13 +126,14 @@ namespace LA_03_01.ViewModels
             {
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
+                OnPropertyChanged("SuperBarrack");
             });
         }
 
         private void SaveToJson()
         {
             File.WriteAllText("superbarrack.json", JsonConvert.SerializeObject(SuperBarrack));
-            File.WriteAllText("superarmy.json", JsonConvert.SerializeObject(SuperArmy));
+            File.WriteAllText("Properties\\superarmy.json", JsonConvert.SerializeObject(SuperArmy));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LA_03_01.Logic
 
         void AddtoArmy(SuperHero superHero);
         void RemovefromArmy(SuperHero superHero);
-        void EditSuperHero();
+        void AddSuperHero(SuperHero superHero);
         void SetupCollection(IList<SuperHero> barrack, IList<SuperHero> army);
     }
 }

@@ -54,9 +54,11 @@ namespace LA_03_01.Logic
             SuperHeroArmy.Remove(superHero);
             messenger.Send("Superhero Removed", "SuperHeroInfo");
         }
-        public void AddSuperHero()
+        public void AddSuperHero(SuperHero superHero)
         {
-            heroEditorService.Add();
+            SuperHeroBarrack.Add(superHero);
+            heroEditorService.Add(superHero);
+            messenger.Send("Superhero Added", "SuperHeroInfo");
         }
 
 

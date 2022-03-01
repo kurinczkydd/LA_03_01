@@ -58,7 +58,7 @@
             <!--<Label Content="{Binding Money}" ContentStringFormat="Money: {0}$" />-->
             <Button Content="Add to army" Margin="5" Height="35" Command="{Binding AddToArmyCommand}"/>
             <Button Content="Remove from army" Margin="5" Height="35" Command="{Binding RemoveFromArmyCommand}"/>
-            <Button Content="Edit superhero" Margin="5" Height="35" Command="{Binding AddSuperHeroCommand}"/>
+            <Button Content="Add superhero" Margin="5" Height="35" Command="{Binding AddSuperHeroCommand}"/>
 
             <Label Content="Average Speed" HorizontalAlignment="Center"/>
             <ProgressBar Height="20" Value="{Binding AVGSpeed, Mode=OneWay}" Margin="5,0,5,5"

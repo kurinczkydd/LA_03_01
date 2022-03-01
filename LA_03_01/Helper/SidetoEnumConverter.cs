@@ -13,8 +13,7 @@ namespace LA_03_01.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            side s = (side)value;
-            
+            return "asd";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
